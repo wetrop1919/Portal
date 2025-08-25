@@ -2,34 +2,161 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Мой Портал</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Портал</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+      background-size: 300% 300%;
+      animation: bgmove 10s infinite alternate;
+    }
+
+    @keyframes bgmove {
+      0% { background-position: left top; }
+      100% { background-position: right bottom; }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background: linear-gradient(90deg, #4facfe, #00f2fe);
+      border-bottom: 3px solid #333;
+      font-size: 26px;
+      font-weight: bold;
+      color: white;
+      position: relative;
+    }
+
+    .profile {
+      width: 45px;
+      height: 45px;
+      border: 2px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      transition: 0.3s;
+    }
+
+    .profile:hover {
+      background: rgba(255,255,255,0.5);
+    }
+
+    /* Меню аккаунта */
+    .account-menu {
+      display: none;
+      position: absolute;
+      top: 65px;
+      right: 15px;
+      border-radius: 10px;
+      background: white;
+      width: 160px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .account-menu a {
+      display: block;
+      padding: 12px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      border-bottom: 1px solid #ddd;
+      transition: 0.3s;
+    }
+
+    .account-menu a:hover {
+      background: #4facfe;
+      color: white;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 150px 1fr;
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .box {
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 22px;
+      font-style: italic;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+
+    .chat {
+      grid-column: 2;
+      grid-row: 1;
+      background: linear-gradient(45deg, #43e97b, #38f9d7);
+    }
+
+    .news {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      background: linear-gradient(45deg, #ff6a00, #ee0979);
+    }
+
+    .games {
+      grid-column: 2;
+      grid-row: 2;
+      background: linear-gradient(45deg, #7f00ff, #e100ff);
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Добро пожаловать на мой портал!</h1>
-    <nav>
-      <a href="blog/">Блог</a>
-      <a href="chat/">Чат</a>
-      <a href="games/">Игры</a>
-    </nav>
+    <div>Все инструменты по сайту</div>
+    <div class="profile" onclick="toggleMenu()">М</div>
+    
+    <!-- Выпадающее меню -->
+    <div class="account-menu" id="accountMenu">
+      <a href="profile.html">Профиль</a>
+      <a href="settings.html">Настройки</a>
+      <a href="logout.html">Выход</a>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>Новости портала</h2>
-      <p>Здесь будут новости и обновления...</p>
-    </section>
-
-    <section>
-      <h2>Последние игры</h2>
-      <a href="games/game1.html">🎮 Игра 1</a><br>
-      <a href="games/game2.html">🎮 Игра 2</a>
-    </section>
+    <div class="news box" onclick="location.href='news.html'">новости</div>
+    <div class="chat box" onclick="location.href='chat.html'">chat</div>
+    <div class="games box" onclick="location.href='games.html'">игры</div>
   </main>
 
-  <footer>
-    <p>© 2025 Мой портал</p>
-  </footer>
+  <script>
+    // Меню аккаунта
+    function toggleMenu() {
+      let menu = document.getElementById("accountMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
+    // Закрытие меню при клике вне
+    window.addEventListener("click", function(e) {
+      let menu = document.getElementById("accountMenu");
+      let profile = document.querySelector(".profile");
+      if (!menu.contains(e.target) && !profile.contains(e.target)) {
+        menu.style.display = "none";
+      }
+    });
+  </script>
 </body>
 </html>
