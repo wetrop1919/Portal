@@ -1,0 +1,33 @@
+.box {
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 22px;
+  font-style: italic;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+.chat {
+  grid-column: 2;
+  grid-row: 1;
+  background: linear-gradient(45deg, #43e97b, #38f9d7);
+}
+
+.news {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  background: linear-gradient(45deg, #ff6a00, #ee0979);
+}
+
+.games {
+  grid-column: 2;
+  grid-row: 2;
+  background: linear-gradient(45deg, #7f00ff, #e100ff);
+}
