@@ -1,0 +1,109 @@
+/* фон страницы уже задаётся в main.css (градиент с анимацией) */
+
+.chat-layout {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.chat-panel {
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  overflow: hidden;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  color: #0b1b2a;
+  font-weight: 700;
+}
+
+.chat-status {
+  margin-left: 10px;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.15);
+  color: #0b1b2a;
+}
+
+.nick-wrap input {
+  border: none;
+  border-radius: 10px;
+  padding: 6px 10px;
+  outline: none;
+  min-width: 140px;
+}
+
+.messages {
+  height: 60vh;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scroll-behavior: smooth;
+  background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+}
+
+.msg {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  padding: 8px 10px;
+  max-width: 80%;
+}
+
+.meta {
+  font-size: 12px;
+  opacity: .8;
+  margin-bottom: 4px;
+}
+
+.txt {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.send-area {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(0,0,0,.15);
+}
+
+#text {
+  resize: none;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  outline: none;
+}
+
+.send-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 0 18px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #7f00ff, #e100ff);
+  color: #fff;
+  transition: transform .12s, box-shadow .12s;
+}
+.send-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+}
+
+/* адаптив */
+@media (max-width: 720px) {
+  .messages { height: 58vh; }
+}

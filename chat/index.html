@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Чат портала</title>
+
+  <!-- общие стили портала -->
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+
+  <!-- стили чата -->
+  <link rel="stylesheet" href="../css/chat.css" />
+</head>
+<body>
+  <header>
+    <div onclick="location.href='../index.html'" style="cursor:pointer">Все инструменты по сайту</div>
+    <div class="profile" id="profileBadge" onclick="toggleMenu()">М</div>
+
+    <div class="account-menu" id="accountMenu">
+      <a href="../profile.html">Профиль</a>
+      <a href="../settings.html">Настройки</a>
+      <a href="../logout.html">Выход</a>
+    </div>
+  </header>
+
+  <main class="chat-layout">
+    <section class="chat-panel">
+      <div class="chat-header">
+        <div>
+          <strong>Общий чат</strong>
+          <span class="chat-status" id="netStatus">подключение…</span>
+        </div>
+        <div class="nick-wrap">
+          Ник: <input id="nick" maxlength="20" placeholder="Гость" />
+        </div>
+      </div>
+
+      <div id="messages" class="messages"></div>
+
+      <form id="sendForm" class="send-area">
+        <textarea id="text" rows="2" maxlength="500" placeholder="Напиши сообщение... (Enter — отправить, Shift+Enter — перенос)"></textarea>
+        <button type="submit" class="send-btn">Отправить</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // меню профиля
+    function toggleMenu() {
+      const m = document.getElementById('accountMenu');
+      m.style.display = (m.style.display === 'block') ? 'none' : 'block';
+    }
+    window.addEventListener('click', (e) => {
+      const m = document.getElementById('accountMenu');
+      const p = document.getElementById('profileBadge');
+      if (!m.contains(e.target) && !p.contains(e.target)) m.style.display = 'none';
+    });
+  </script>
+  <script src="../js/chat.js"></script>
+</body>
+</html>
